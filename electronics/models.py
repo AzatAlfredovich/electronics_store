@@ -79,7 +79,7 @@ class NetworkNode(models.Model):
     supplier = models.ForeignKey(
         "self",
         on_delete=models.SET_NULL,
-        null=True,              # null=True/blank=True у завода поставщика нет
+        null=True,  # null=True/blank=True у завода поставщика нет
         blank=True,
         related_name="clients",
         verbose_name="Поставщик",
@@ -96,7 +96,7 @@ class NetworkNode(models.Model):
 
     # Задолженность перед поставщиком
     debt_to_supplier = models.DecimalField(
-        max_digits=12,           #2 знака после запятой
+        max_digits=12,  # 2 знака после запятой
         decimal_places=2,
         default=0,
         verbose_name="Задолженность перед поставщиком",
@@ -105,7 +105,7 @@ class NetworkNode(models.Model):
     # Уровень иерархии считаем автоматически
     hierarchy_level = models.PositiveSmallIntegerField(
         default=0,
-        editable=False,           # editable=False скрывает поле из обычного редактирования
+        editable=False,  # editable=False скрывает поле из обычного редактирования
         verbose_name="Уровень иерархии",
     )
 
@@ -148,9 +148,7 @@ class NetworkNode(models.Model):
         while supplier is not None:
             # Если поставщик уже встречался, значит есть цикл
             if supplier.pk in visited_ids:
-                raise ValidationError(
-                    "Обнаружена циклическая ссылка"
-                )
+                raise ValidationError("Обнаружена циклическая ссылка")
 
             visited_ids.add(supplier.pk)
             level += 1
