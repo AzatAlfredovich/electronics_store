@@ -3,12 +3,12 @@ from rest_framework.permissions import BasePermission
 
 class IsActiveAndStaffPermission(BasePermission):
     """
-    Доступ только для активных сотрудников.
+    Доступ только для активных сотрудников
 
     Условия:
     - пользователь авторизован;
     - пользователь активен;
-    - пользователь является сотрудником (is_staff=True).
+    - пользователь является сотрудником (is_staff=True)
     """
 
     def has_permission(self, request, view):

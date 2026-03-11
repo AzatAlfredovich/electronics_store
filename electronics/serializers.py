@@ -4,7 +4,7 @@ from electronics.models import NetworkNode, Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    """Сериализатор для продукта."""
+    """Сериализатор для продукта"""
 
     class Meta:
         model = Product
@@ -12,7 +12,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class NetworkNodeSerializer(serializers.ModelSerializer):
-    """Сериализатор для звена сети."""
+    """Сериализатор для звена сети"""
 
     # Показываем продукты только для чтения (связанные товары)
     products = ProductSerializer(many=True, read_only=True)
